@@ -1,19 +1,24 @@
 
 package com.shahenlibrary;
 
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.facebook.react.views.view.ColorUtil;
 import com.shahenlibrary.events.ReceiveEventTypes;
 import com.shahenlibrary.events.SendEventTypes;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class ExtendableImageManager extends SimpleViewManager<ExtendableImage> {
@@ -28,6 +33,10 @@ public class ExtendableImageManager extends SimpleViewManager<ExtendableImage> {
   private final String PROP_MAX_SCALE = "maxScale";
   private final String PROP_MIN_SCALE = "minScale";
   private final String PROP_PAN_ENABLED = "panEnabled";
+  private final String PROP_PAN_LIMIT = "panLimit";
+  private final String PROP_SCALE_TYPE = "scaleType";
+  private final String PROP_DOUBLE_TAP_SCALE = "doubleTapScale";
+  private final String PROP_TILE_BACKGROUND_COLOR = "tileBackgroundColor";
 
   @Nullable
   @Override
@@ -61,6 +70,19 @@ public class ExtendableImageManager extends SimpleViewManager<ExtendableImage> {
       default:
         // PASS
     }
+  }
+
+  @Nullable
+  @Override
+  public Map getExportedViewConstants() {
+    return MapBuilder.of(
+            "PanCenter", Integer.toString(ExtendableImage.PAN_LIMIT_CENTER),
+            "PanInside", Integer.toString(ExtendableImage.PAN_LIMIT_INSIDE),
+            "PanOutside", Integer.toString(ExtendableImage.PAN_LIMIT_OUTSIDE),
+            "ScaleCenterCrop", Integer.toString(ExtendableImage.SCALE_TYPE_CENTER_CROP),
+            "ScaleCenterInside", Integer.toString(ExtendableImage.SCALE_TYPE_CENTER_INSIDE),
+            "ScaleCustom", Integer.toString(ExtendableImage.SCALE_TYPE_CUSTOM)
+    );
   }
 
   @Override
@@ -98,5 +120,33 @@ public class ExtendableImageManager extends SimpleViewManager<ExtendableImage> {
   public void setPanEnabled(ExtendableImage view, boolean isEnabled) {
     Log.d(TAG, "setPanEnabled: " + isEnabled);
     view.setPanEnabled(isEnabled);
+  }
+
+  @ReactProp(name=PROP_PAN_LIMIT)
+  public void setPanLimit(ExtendableImage view, int panLimit) {
+    if (view.isPanLimitValid(panLimit)) {
+      view.setPanLimit(panLimit);
+      return;
+    }
+    Log.d(TAG, "setPanLimit: Wrong value : " + panLimit);
+  }
+
+  @ReactProp(name=PROP_SCALE_TYPE)
+  public void setScaleType(ExtendableImage view, int scaleType) {
+    if (view.isScaleTypeValid(scaleType)) {
+      view.setMinimumScaleType(scaleType);
+      return;
+    }
+    Log.d(TAG, "setScaleType: Wrong value : " + scaleType);
+  }
+
+  @ReactProp(name=PROP_DOUBLE_TAP_SCALE)
+  public void setDoubleTapEnabled(ExtendableImage view, int doubleTapScale) {
+    view.setDoubleTapZoomDpi(doubleTapScale);
+  }
+
+  @ReactProp(name=PROP_TILE_BACKGROUND_COLOR)
+  public void setTileBackgroundColor(ExtendableImage view, int color) {
+    view.setTileBackgroundColor(color);
   }
 }
