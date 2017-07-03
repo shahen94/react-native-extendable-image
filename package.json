@@ -1,7 +1,7 @@
 {
   "name": "react-native-extendable-image",
   "version": "0.0.0",
-  "description": "",
+  "description": "Native solution for extendable ImageView",
   "main": "index.js",
   "scripts": {
     "commit-all": "git add . && git-cz",
@@ -9,13 +9,16 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "android",
+    "react"
   ],
-  "author": "",
-  "license": "",
+  "author": "Shahen Hovhannisyan <shahen.hovhannisyan.94@gmail.com>",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2"
   },
+  "homepage": "https://github.com/shahen94/react-native-extendable-image#readme",
   "devDependencies": {
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
@@ -27,5 +30,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/shahen94/react-native-extendable-image.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shahen94/react-native-extendable-image/issues"
   }
 }
