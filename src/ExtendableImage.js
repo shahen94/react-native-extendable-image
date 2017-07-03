@@ -7,7 +7,8 @@ import {
     requireNativeComponent,
     UIManager,
     findNodeHandle,
-    processColor
+    processColor,
+    Image
 } from 'react-native';
 
 import resolveAsset from './utils/resolveAssets';
@@ -17,7 +18,7 @@ const ExtendableImageUI = UIManager.RNExtendableImage;
 class ExtendableImage extends PureComponent {
     static propTypes = {
         ...View.propTypes,
-        source: PropTypes.string.isRequired,
+        source: Image.propTypes.source,
         minScale: PropTypes.number,
         maxScale: PropTypes.number,
         panEnabled: PropTypes.bool,
