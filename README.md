@@ -12,13 +12,6 @@
 ### Manual installation
 
 
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-extendable-image` and add `RNExtendableImage.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNExtendableImage.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
@@ -37,9 +30,21 @@
 
 ## Usage
 ```javascript
-import RNExtendableImage from 'react-native-extendable-image';
+import ExtendableImage from 'react-native-extendable-image';
 
-// TODO: What to do with the module?
-RNExtendableImage;
+class App extends PureComponent {
+	render() {
+		<ExtendableImage
+			source={/* require() or { uri: 'https://..' } */}
+			panEnabled={/* true | false */}
+			minScale={/* number */}
+			maxScale={/* number */}
+			panLimit={/* use constants: ExtendableImage.Constants.Pan.* */}
+			scaleType={/* use constants: ExtendableImage.Constants.Scale.* */}
+			doubleTapScale={/* number */}
+			tileBackgroundColor={/* RN color */}
+		/>
+	}
+}
 ```
   
