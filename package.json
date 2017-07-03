@@ -21,6 +21,9 @@
     "cz-conventional-changelog": "^2.0.0",
     "semantic-release": "^6.3.6"
   },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/shahen94/react-native-extendable-image.git"

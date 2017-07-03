@@ -55,7 +55,7 @@ class ExtendableImage extends PureComponent {
         }
         return (
             <RNExtendableImage
-                {...this.props}
+                {...propsShouldPass}
                 source={source}
             />
         );
