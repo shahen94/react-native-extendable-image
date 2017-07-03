@@ -1,24 +1,16 @@
 
 package com.shahenlibrary;
 
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
-import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.views.view.ColorUtil;
-import com.shahenlibrary.events.ReceiveEventTypes;
-import com.shahenlibrary.events.SendEventTypes;
 
-import java.util.Arrays;
 import java.util.Map;
 
 public class ExtendableImageManager extends SimpleViewManager<ExtendableImage> {

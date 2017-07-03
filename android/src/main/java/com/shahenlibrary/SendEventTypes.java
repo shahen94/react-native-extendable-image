@@ -1,4 +1,4 @@
-package com.shahenlibrary.events;
+package com.shahenlibrary;
 
 /**
  * Created by Shahen on 6/30/17.
