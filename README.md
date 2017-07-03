@@ -1,6 +1,10 @@
 
 # react-native-extendable-image
 
+Highly performant ImageView transformation with gestures ✋.
+
+This library provides Extendable Image component, which is editable using gestures like pinch, double tap or pull. You can scale/move ImageView
+
 ## Getting started
 
 `$ npm install react-native-extendable-image --save`
