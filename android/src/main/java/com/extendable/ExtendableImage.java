@@ -1,6 +1,7 @@
 package com.extendable;
 
 import android.content.Context;
+import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -25,12 +26,22 @@ public class ExtendableImage extends SubsamplingScaleImageView {
             ExtendableImage.SCALE_TYPE_CUSTOM
     };
 
+    GLSurfaceView mSurfaceView;
+
     public ExtendableImage(Context context, AttributeSet attr) {
         super(context, attr);
+        initializeSurface(context);
     }
 
     public ExtendableImage(Context context) {
         super(context);
+        initializeSurface(context);
+    }
+
+    private void initializeSurface(Context context) {
+        mSurfaceView = new GLSurfaceView(context);
+        mSurfaceView.setEGLContextClientVersion(2);
+        mSurfaceView.setRenderer(new GLExtendableRenderer(context));
     }
 
     public boolean isPanLimitValid(int panLimit) {
